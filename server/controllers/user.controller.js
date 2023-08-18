@@ -75,7 +75,7 @@ const register = async (req, res, next) => {
     })
 }
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
     try {
         const {email, password} = req.body;
 
@@ -121,7 +121,7 @@ const logout = (req, res) => {
     })
 }
 
-const getProfile = async (req, res) => {
+const getProfile = async (req, res, next) => {
     try {
         const userId = req.user.id;
         const user = await User.findById(userId);
@@ -172,7 +172,7 @@ const forgotPassword = async (req, res, next) => {
     }
 }
 
-const resetPassword = async (req, res) => {
+const resetPassword = async (req, res, next) => {
     const {resetToken} = req.params;
 
     const {password} = req.body;
@@ -206,7 +206,7 @@ const resetPassword = async (req, res) => {
 
 }
 
-const changedPassword = async (req, res) => {
+const changedPassword = async (req, res, next) => {
     const {oldPassword, newPassword} = req.body;
     const {id} = req.user;
 
@@ -234,7 +234,7 @@ const changedPassword = async (req, res) => {
     })
 }
 
-const updateUser = async (req, res) => {
+const updateUser = async (req, res, next) => {
     const {fullName} = req.body;
     const {id} = req.user.id;
 
